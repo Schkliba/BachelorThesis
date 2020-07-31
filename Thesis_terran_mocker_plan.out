@@ -1,0 +1,42 @@
+Train SCV;0;20;50;0
+Train SCV;20;40;50;0
+Train SCV;40;60;50;0
+Train SCV;60;80;50;0
+Train SCV;105;125;50;0
+Train SCV;181;201;50;0
+Train SCV;247;267;50;0
+Build Supply Depo;373;398;100;0
+Train SCV;428;448;50;0
+Train SCV;485;505;50;0
+Train SCV;537;557;50;0
+Train SCV;586;606;50;0
+Train SCV;632;652;50;0
+Train SCV;675;695;50;0
+Train SCV;716;736;50;0
+Train SCV;754;774;50;0
+Build Supply Depo;828;853;100;0
+Train SCV;863;883;50;0
+Train SCV;898;918;50;0
+Train SCV;932;952;50;0
+Train SCV;964;984;50;0
+Train SCV;994;1014;50;0
+Train SCV;1024;1044;50;0
+Train SCV;1052;1072;50;0
+Train SCV;1079;1099;50;0
+Build Supply Depo;1132;1157;100;0
+Train SCV;1157;1177;50;0
+Train SCV;1182;1202;50;0
+Build Barracks;1256;1306;150;0
+Train Marine;1306;1326;50;0
+Build Supply Depo;1327;1352;100;0
+Build Supply Depo;1377;1402;100;0
+Build Supply Depo;1425;1450;100;0
+Build Factory;1523;1573;200;100
+Train Vulure;1573;1603;75;0
+Train Vulure;1603;1633;75;0
+Train Vulure;1633;1663;75;0
+Train Vulure;1665;1695;75;0
+Train Vulure;1701;1731;75;0
+Build Supply Depo;1748;1773;100;0
+Build Supply Depo;1797;1822;100;0
+Build Supply Depo;1846;1871;100;0

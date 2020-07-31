@@ -1,0 +1,22 @@
+<schema race="protoss">
+	<goal>
+		<name>Worker</name>
+		<count>33</count>
+	</goal>
+	<goal>
+		<name>Pylon</name>
+		<count>7</count>
+	</goal>
+    <goal>
+		<name>Cybernetic_Core</name>
+		<count>1</count>
+	</goal>
+    <goal>
+		<name>Dragoon</name>
+		<count>8</count>
+	</goal>
+    <goal>
+		<name>Gateway</name>
+		<count>3</count>
+	</goal>
+</schema>
