@@ -1,0 +1,6 @@
+<schema race="zerg">
+	<goal>
+		<name>Mutalisk</name>
+		<count>4</count>
+	</goal>
+</schema>

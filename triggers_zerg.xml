@@ -1,0 +1,27 @@
+<triggers>
+    <effect when="end" resource="Base" count="1">
+        <action>
+		<name>Plan Serialised Larvas</name>
+		<minerals>200</minerals>
+		<vespin>200</vespin>
+		<workers>0</workers>
+		<duration>120</duration>
+		<burrow>
+            <element>
+				<key>Base</key>
+				<value>1</value>
+			</element>
+		</burrow>
+		<cost>
+		</cost>
+		<require>
+		</require>
+		<effects>
+			<element>
+				<key>Larva</key>
+				<value>2</value>
+			</element>
+		</effects>
+	</action>
+    </effect>
+</triggers>
