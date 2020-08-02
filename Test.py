@@ -147,11 +147,11 @@ print(actions)
 def add(a,b):
     return a+b
 
-hmaxer = hmaxer.CumulativeHeuristic(max)
+hmaxer = hmaxer.ParallelHeuristic(max)
+llb = hmaxer.LLBHeuristic(max,min)
 for a in actions:
     hmaxer.register_action(a)
-
-
+    llb.register_action(a)
 
 
 minerals = 0

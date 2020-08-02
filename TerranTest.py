@@ -277,11 +277,6 @@ class Game:
             if not (act is None): response += [act]
         return response
 
-    """
-    def plan_finished_action(self, action: Action):
-        sch_a = self.__plan_acton(action)
-        self.window.plan_finished_action(sch_a)
-        return self.CT()"""
 
     def reverse(self,time): #finished action
         self.state.return_to(time)

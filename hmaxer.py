@@ -237,6 +237,67 @@ class ParallelHeuristic(JustificationGraph):
         source.h = h
         return h
 
+class LLBHeuristic(ParallelHeuristic):
+
+    def __init__(self,and_f, or_f = min, measure = lambda x:x.duration ):
+        super().__init__(and_f,or_f)
+        self.metric = measure
+
+    def LM_Cutting(self,state_variables,goal_variables):
+        while self.h() > 0:
+            self.h(state_variables,goal_variables,self.metric)
+            V_star = self.target_search()
+            #V_0 = self.reachability_search(V_star)
+            landmark = self.find_cut(V_star, None)
+            #self.adjust_for(landmark)
+            return landmark
+
+    def adjust_for(self, landmarks):
+        pass
+
+    def find_cut(self, V_star, V_0):
+        lm = []
+        for node in V_star:
+            h_max = 0
+            potential_lm = []
+            for edge in node.outgoing:
+                distance = self.measure(edge)
+                if h_max < distance:
+                    h_max = distance
+                    potential_lm = {edge}
+                elif h_max == distance:
+                    potential_lm.add(edge)
+            lm = lm.union(potential_lm)
+
+    def target_search(self):
+
+        queue = self.by_action["Goal"].incoming.copy()  # goals jsou jen stringy
+        outset = {self.by_action["Goal"]}
+        while not len(queue) == 0:
+            edge = queue.pop(0)
+            distance = self.measure(edge)
+            if distance == 0:
+                source, target, resource, tFyp = edge
+                addition = source.incoming.copy()
+                outset.add(source)
+                queue += addition
+        return outset
+
+    def reachability_search(self, target_set):
+
+        queue = self.by_action["Start"].ourgoing.copy()  # goals jsou jen stringy
+        outset = {self.by_action["Start"]}
+        while not len(queue) == 0:
+            edge = queue.pop(0)
+            source, target, resource, typ = edge
+            if target not in target_set:
+                addition = source.incoming.copy()
+                outset.add(source)
+                queue = addition + queue
+
+        return outset
+
+
 class CumulativeHeuristic(JustificationGraph):
 
     def __init__(self,and_f, or_f = min ,measure=lambda x: x.minerals,own = lambda x,y: x*y):

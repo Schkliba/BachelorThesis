@@ -122,6 +122,7 @@ VESPIN_RATE = 0.07
 INNIT_WORKERS = 5
 INNIT_MINERALS = 200
 INNIT_VESPIN = 0
+
 INNIT_STATE = {"Pop_Cap": 8, "Pop": 8,"Hatchery": 1, "Hatchery_Token": 1, "Nexus":1, "Base": 1, "Larva_Timer":1, "Larva": 3, "Worker": 5}
 #INNIT_STATE = {"Worker":1}
 
@@ -177,8 +178,6 @@ try:
 finally:
     end = time.time()
     print(game.state)
-
-
     print(end-start)
     print("Nodes discovered:"+str(game.node_count))
     print("Branches:"+str(game.finished_branches))

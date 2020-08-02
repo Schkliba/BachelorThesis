@@ -3,24 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="340df6e4-ccb1-4f03-a72e-a2d24b6e0f2a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ActionStatev0.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BOSearch.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Justify.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PDDLReader.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Parserv1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCActions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCState.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerranNew.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerranSearch-IDDFS.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerranSearch.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerranSearch0v5.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerranSearchv0.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerranSearchv1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerranSearchv2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerranSearchv3.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TerranSearchv4.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Triggers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/landmarklowerbound.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TerranTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TerranTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hmaxer.py" beforeDir="false" afterPath="$PROJECT_DIR$/hmaxer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,11 +155,11 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.Main" />
       <item itemvalue="Python.TerranSearchv4" />
       <item itemvalue="Python.TerranTest" />
       <item itemvalue="Python.Test" />
       <item itemvalue="Python.ThesisParser" />
-      <item itemvalue="Python.Main" />
     </list>
     <recent_temporary>
       <list>
@@ -263,10 +249,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1590118047851" />
-    <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1596221572851">
+    <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1596274950769">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596221572851" />
+    <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596274950769" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1592141733908">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
