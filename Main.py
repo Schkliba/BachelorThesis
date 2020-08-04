@@ -123,7 +123,7 @@ INNIT_WORKERS = 5
 INNIT_MINERALS = 200
 INNIT_VESPIN = 0
 
-INNIT_STATE = {"Pop_Cap": 8, "Pop": 8,"Hatchery": 1, "Hatchery_Token": 1, "Nexus":1, "Base": 1, "Larva_Timer":1, "Larva": 3, "Worker": 5}
+INNIT_STATE = {"Pop_Cap": 8, "Pop": 8,"Hatchery": 1, "Hatchery_Token": 1, "Nexus":1, "Base": 1, "Larva_Timer":1, "Larva": 3, "Worker": 5, "Vespin": 1}
 #INNIT_STATE = {"Worker":1}
 
 start = time.time()
@@ -143,7 +143,7 @@ print(actions)
 
 
 pool = ActionPool()
-duration_g = LLB.ParallelHeuristic(max)#LLB.CumulativeHeuristic(max,min,lambda x:x.duration,lambda x,y: x)
+duration_g = LLB.LLBHeuristic(max)#LLB.CumulativeHeuristic(max,min,lambda x:x.duration,lambda x,y: x)
 resource_g = LLB.CumulativeHeuristic(max)
 
 for a in actions:
@@ -173,11 +173,11 @@ game = TerranSearch.Game(in_state, pool, duration_g,resource_g, max_s)
 try:
     pass
     bestplan = TerranSearch.AstarSearch(game, pool, goals)
+    print(game.state)
     print(len(bestplan))
     print(bestplan)#"""
 finally:
     end = time.time()
-    print(game.state)
     print(end-start)
     print("Nodes discovered:"+str(game.node_count))
     print("Branches:"+str(game.finished_branches))

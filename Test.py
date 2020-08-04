@@ -147,10 +147,10 @@ print(actions)
 def add(a,b):
     return a+b
 
-hmaxer = hmaxer.ParallelHeuristic(max)
+wow = hmaxer.ParallelHeuristic(max)
 llb = hmaxer.LLBHeuristic(max,min)
 for a in actions:
-    hmaxer.register_action(a)
+    wow.register_action(a)
     llb.register_action(a)
 
 
@@ -167,9 +167,13 @@ goals_s = set()
 #print("max workers = "+ str(max_workers))
 
 #in_state = TerranSearch.Status(INNIT_MINERALS,INNIT_VESPIN, INNIT_STATE,INNIT_WORKERS, MINERAL_RATE, VESPIN_RATE, max_workers)
-print(hmaxer.h(INNIT_STATE,goals2))
-
-
+#print(hmaxer.h(INNIT_STATE,goals2))
+llb.take_measures()
+wow.take_measures()
+print(llb.target_search(goals2))
+print("***********************************************************")
+print(llb.LM_Cutting(INNIT_STATE,goals2))
+print(wow.h(INNIT_STATE,goals2))
 end = time.time()
 print(end-start)
 #export_plan(bestplan,ofilname)

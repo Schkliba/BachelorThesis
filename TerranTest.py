@@ -256,8 +256,6 @@ class Game:
     def __plan_acton(self,action):
 
         surplus_time = self.state.when(action) - self.state.CT
-
-
         print("Surplus!"+str(surplus_time))
         assert surplus_time < math.inf
         z = time.time()
@@ -279,11 +277,12 @@ class Game:
 
 
     def reverse(self,time): #finished action
-        self.state.return_to(time)
-        self.window.rewind_to(time)
         last = self.window.last()
         self.state.unplan_action(last)
         self.window.unplan_action(last)
+        self.state.return_to(time)
+        self.window.rewind_to(time)
+
 
     def get_plan(self, distance):
         return self.window.get_plan()
@@ -301,7 +300,8 @@ class Game:
                 if u not in new_goals or new_state[u] >= new_goals[u]:
                     simple_state.add(u)
         simple_goals = set(new_goals.keys())
-
+        self.h_resources.take_measures()
+        self.h_duration.take_measures()
         minerals = self.h_resources.h(new_state,new_goals)
         vespin = self.h_resources.h(new_state,new_goals, lambda x: x.vespin)
         print(vespin)
@@ -311,7 +311,7 @@ class Game:
         #print(new_state)
         #print(new_goals)
         one_end = self.window.get_potential() + self.state.project_h(minerals,vespin)
-        second_end = self.window.get_potential() + self.h_duration.h(simple_state,simple_goals)
+        second_end = self.window.get_potential() + self.h_duration.LM_Cutting(simple_state,simple_goals)
         #print(self.window.get_potential())
         #print(self.window.a_order)
         print("First end:"+str(one_end))
@@ -326,7 +326,7 @@ class Game:
 def AstarSearch(game: Game, actions: ActionPool, goals:List[Goal]):
     step = actions.max_duration()
     min = actions.min_duration()
-    base = 10000
+    base = 20000
     """for g in goals:
         base += g.count*step"""
     ub_time = base
@@ -412,8 +412,6 @@ def AStarDFS(game: Game, goals, current_time, ub_time, depth: int, ub_distance):
 
     #print(game.window.a_order)
 
-
-
     for a in plan_act.actions:
 
         z = time.time()
@@ -428,23 +426,6 @@ def AStarDFS(game: Game, goals, current_time, ub_time, depth: int, ub_distance):
 
         new_current_time = game.plan_next_action(a)
 
-        least_new_time = math.inf
-        """
-        for i in plan_act.actions:
-            #print(i)
-            if game.state.is_plannable(i):
-                t = game.state.when(i)
-                #print(t)
-                if t < least_new_time:
-                    least_new_time = t
-            #else:
-                #print("Nein!")
-        # print("LNT" + str(least_new_time))
-        if not least_new_time < math.inf:
-            game.reverse(current_time)
-            continue
-        assert least_new_time >= current_time
-        """
         #print(game.state)
         #print("bf/af")
         finished_actions = game.refresh(new_current_time)

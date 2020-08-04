@@ -37,7 +37,8 @@ class JNode(Node):
 
     def preconditions(self):
         return self.inner_action.preconditions()
-
+    def __repr__(self):
+        return self.name
     def preconditions_cost(self):
         return self.inner_action.unary_cost
 
@@ -74,12 +75,12 @@ def outgoing(node):
 
 
 class JustificationGraph:
-    def __init__(self):
+    def __init__(self,metric):
         self.by_effects = {}
-        self.measure = lambda x : x.duration
         self.varibales = set()
         self.by_action = {}
-
+        self.metric = metric
+        self.measures={}
 
     def __get_or_make_node(self, name) -> JNode:
         if name not in self.nodes.keys():
@@ -97,6 +98,13 @@ class JustificationGraph:
                 self.by_effects[e] += [node]
             else:
                 self.by_effects[e] = [node]
+
+    def take_measures(self):
+        for a, node in self.by_action.items():
+            self.measures[a] = self.metric(node.inner_action)
+
+    def measure(self,node):
+        return self.measures[node.inner_action.name]
 
     def construct_edges(self):
         for a, action in self.by_action.items():
@@ -118,90 +126,17 @@ class JustificationGraph:
 
 
 
-    """
-    def restart(self,plannables):
-        start = StartNode(in_state)
-        self.by_action["Start"] = start
-        for p in plannables:
-            self.by_action[p].arcNodes(start,self.by_action[p],"starterpack","r")
-
-    def LM_Cutting(self):
-        V_star = self.target_search()
-        #V_0 = self.reachability_search(V_star)
-        landmark = self.find_cut(V_star,None)
-
-    def find_cut(self, V_star, V_0):
-        lm = set()
-        for node in V_star:
-            h_max = 0
-            potential_lm = set()
-            for edge in node.outgoing:
-                distance = self.measure(edge)
-                if h_max < distance:
-                    h_max = distance
-                    potential_lm = {edge}
-                elif h_max == distance:
-                    potential_lm.add(edge)
-            lm = lm.union(potential_lm)
-
-    def target_search(self):
-
-        queue = self.by_action["Goal"].incoming.copy() #goals jsou jen stringy
-        outset = {self.by_action["Goal"]}
-        while not len(queue) == 0:
-            edge = queue.pop(0)
-            distance = self.measure(edge)
-            if distance == 0:
-                source,target,resource,tFyp = edge
-                addition = source.incoming.copy()
-                outset.add(source)
-                queue += addition
-        return outset
-
-    def reachability_search(self, target_set):
-
-        queue = self.by_action["Start"].ourgoing.copy()  # goals jsou jen stringy
-        outset = {self.by_action["Start"]}
-        while not len(queue) == 0:
-            edge = queue.pop(0)
-            source, target, resource, typ = edge
-            if target not in target_set:
-                    addition = source.incoming.copy()
-                    outset.add(source)
-                    queue = addition + queue
-
-        return outset"""
-class FilterHeuristic(JustificationGraph):
-
-    def filter(self,out_state):
-        relevant_action = []
-        for a in self.actions:
-            reject = False
-            for p in a.postconditions():
-                if p not in out_state:
-                    reject = True
-
-            if not reject:
-                relevant_action.append(a)
-        pruned_actions = []
-        for a in relevant_action:
-            reject = False
-            for p in a.preconditions():
-                if p not in out_state:
-                    reject = True
-            if not reject:
-                pruned_actions.append(a)
-
 class ParallelHeuristic(JustificationGraph):
 
-    def __init__(self,and_f, or_f = min ):
-        super().__init__()
+    def __init__(self,and_f, or_f = min, measure=lambda x: x.duration):
+        super().__init__(measure)
         self.and_f = and_f
         self.or_f = or_f
+        self.heuristic_vals = {}
 
-    def h(self, state_variables,goal_variables, measure=lambda x: x.duration):
-        h = 0
-        self.measure = measure
+    def h(self, state_variables,goal_variables, ):
+        h=0
+        self.heuristic_vals = {}
         for g in goal_variables: #and vrcholy
             if g not in state_variables:
                 new_sources = self.by_effects[g]
@@ -212,6 +147,10 @@ class ParallelHeuristic(JustificationGraph):
             else:
                 little_h = 0
             h = self.and_f(h, little_h)
+            if g in self.heuristic_vals:
+                self.heuristic_vals[g] = self.and_f(self.heuristic_vals[g], little_h)
+            else:
+                self.heuristic_vals[g] = little_h
         return h
 
 
@@ -219,10 +158,10 @@ class ParallelHeuristic(JustificationGraph):
         if source.visited: #detekce cyklů
             return math.inf
         source.visited = True
-        action_measure = self.measure(source.inner_action)
+        action_measure = self.measure(source)
         h = 0
-        for p in source.preconditions(): #and search přes jednotlivé proconditions
 
+        for p in source.preconditions(): #and search přes jednotlivé proconditions
             if p not in state_variables:
                 new_sources = self.by_effects[p]
                 little_h = math.inf
@@ -232,87 +171,106 @@ class ParallelHeuristic(JustificationGraph):
             else:
                 little_h = 0
             h = self.and_f(h,little_h)
+            if p in self.heuristic_vals: self.heuristic_vals[p] = self.and_f(self.heuristic_vals[p],little_h)
+            else: self.heuristic_vals[p] = little_h
         h += action_measure
         source.visited = False
-        source.h = h
+
         return h
 
 class LLBHeuristic(ParallelHeuristic):
 
-    def __init__(self,and_f, or_f = min, measure = lambda x:x.duration ):
-        super().__init__(and_f,or_f)
-        self.metric = measure
+    def __init__(self,and_f, or_f = min, metric = lambda x:x.duration ):
+        super().__init__(and_f,or_f,metric)
+        self.measures ={}
 
     def LM_Cutting(self,state_variables,goal_variables):
-        while self.h() > 0:
-            self.h(state_variables,goal_variables,self.metric)
-            V_star = self.target_search()
-            #V_0 = self.reachability_search(V_star)
+
+        h_lm = 0
+
+        while self.h(state_variables,goal_variables) > 0:
+            print("WOOOOOOOO")
+            print(state_variables)
+            print(self.heuristic_vals)
+            V_star = self.target_search(goal_variables)
+            print(V_star)
             landmark = self.find_cut(V_star, None)
-            #self.adjust_for(landmark)
-            return landmark
+            print(landmark)
+            h_lm += self.adjust_for(landmark)
+            print(self.measures)
+        #print(self.heuristic_vals)
+        #return landmark
+        return h_lm
 
     def adjust_for(self, landmarks):
-        pass
+        mininimum_cost  = math.inf
+        for l in landmarks:
+            mininimum_cost = min(self.measures[l.name],mininimum_cost)
+        for l in landmarks:
+            self.measures[l.name] -= mininimum_cost
+        return mininimum_cost
+
+
+    def get_h(self,node):
+        ret_val = 0
+        for i in node.preconditions():
+            ret_val = self.max(ret_val,self.heuristic_vals[i])
+        return ret_val
 
     def find_cut(self, V_star, V_0):
-        lm = []
-        for node in V_star:
-            h_max = 0
-            potential_lm = []
-            for edge in node.outgoing:
-                distance = self.measure(edge)
-                if h_max < distance:
-                    h_max = distance
-                    potential_lm = {edge}
-                elif h_max == distance:
-                    potential_lm.add(edge)
-            lm = lm.union(potential_lm)
 
-    def target_search(self):
+        h_max = 0
 
-        queue = self.by_action["Goal"].incoming.copy()  # goals jsou jen stringy
-        outset = {self.by_action["Goal"]}
+        sufficing_actions = []
+        for variable in V_star:
+            if h_max < self.heuristic_vals[variable]:
+                maybe_actions = self.by_effects[variable]
+                sufficing_actions = []
+                for a in maybe_actions:
+                    distance = self.measure(a)
+                    print(a)
+                    print(distance)
+                    if distance > 0:
+                        sufficing_actions += [a]
+                        h_max = self.heuristic_vals[variable]
+
+        return sufficing_actions
+
+    def target_search(self, goals):
+
+        queue = [] # goals jsou jen stringy
+        outset = list(goals)
+        visited = set()
+        for g in goals:
+            queue +=self.by_effects[g]
         while not len(queue) == 0:
-            edge = queue.pop(0)
-            distance = self.measure(edge)
+            action_edge = queue.pop(0)
+            if action_edge in visited:
+                continue
+            visited.add(action_edge)
+            distance = self.measure(action_edge)
             if distance == 0:
-                source, target, resource, tFyp = edge
-                addition = source.incoming.copy()
-                outset.add(source)
-                queue += addition
-        return outset
-
-    def reachability_search(self, target_set):
-
-        queue = self.by_action["Start"].ourgoing.copy()  # goals jsou jen stringy
-        outset = {self.by_action["Start"]}
-        while not len(queue) == 0:
-            edge = queue.pop(0)
-            source, target, resource, typ = edge
-            if target not in target_set:
-                addition = source.incoming.copy()
-                outset.add(source)
-                queue = addition + queue
-
+                prec = action_edge.preconditions()
+                outset += prec
+                for p in prec:
+                    queue += self.by_effects[p]
         return outset
 
 
 class CumulativeHeuristic(JustificationGraph):
 
     def __init__(self,and_f, or_f = min ,measure=lambda x: x.minerals,own = lambda x,y: x*y):
-        super().__init__()
+        super().__init__(measure)
         self.and_f = and_f
         self.or_f = or_f
-        self.measure = measure
         self.own = own
 
     def h(self, state_variables,goal_variables, measure=None):
 
         h = 0
-        temp = self.measure
+        temp = self.metric
         if measure is not None:
-            self.measure = measure
+            self.metric = measure
         for g,count in goal_variables.items(): #and vrcholy
 
             if g not in state_variables or count > state_variables[g]:
@@ -329,7 +287,7 @@ class CumulativeHeuristic(JustificationGraph):
             else:
                 little_h = 0
             h = self.and_f(h, little_h)
-        self.measure = temp
+        self.metric = temp
         return h
 
 
@@ -339,8 +297,7 @@ class CumulativeHeuristic(JustificationGraph):
         if source.visited: #detekce cyklů
             return math.inf
         source.visited = True
-        action_measure = self.measure(source.inner_action)
-
+        action_measure = self.measure(source)
         h = 0
         little_h = math.inf
         for p, count in source.preconditions_cost().items(): #and search přes jednotlivé proconditions

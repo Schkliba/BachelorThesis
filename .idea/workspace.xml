@@ -6,7 +6,11 @@
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TerranTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TerranTest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zerg_Mocker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Zerg_Mocker.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hmaxer.py" beforeDir="false" afterPath="$PROJECT_DIR$/hmaxer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hydra2ultralisk.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hydra2ultralisk.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hydra2ultralisk_plan.out" beforeDir="false" afterPath="$PROJECT_DIR$/hydra2ultralisk_plan.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mutalisk4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mutalisk4.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,8 +65,8 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\Elyon\Documents\MFF projeky\PlanCraft\ThesisRepository\Main.py" />
-      <option name="PARAMETERS" value="mutalisk4" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main.py" />
+      <option name="PARAMETERS" value="hydra2ultralisk" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -125,7 +129,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="PARAMETERS" value="Zerg_Mocker" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -155,11 +159,11 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.Main" />
       <item itemvalue="Python.TerranSearchv4" />
       <item itemvalue="Python.TerranTest" />
       <item itemvalue="Python.Test" />
       <item itemvalue="Python.ThesisParser" />
+      <item itemvalue="Python.Main" />
     </list>
     <recent_temporary>
       <list>
@@ -197,10 +201,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="414" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596183053740">
+    <state x="414" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596494143257">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596183053740" />
+    <state x="414" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596494143257" />
     <state x="718" y="324" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596178601149">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -213,22 +217,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="794" y="437" width="356" height="166" key="Github.CreateGistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596185991456" />
-    <state width="1899" height="347" key="GridCell.Tab.0.bottom" timestamp="1596217651495">
+    <state width="1899" height="263" key="GridCell.Tab.0.bottom" timestamp="1596500076712">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="347" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596217651495" />
-    <state width="1899" height="347" key="GridCell.Tab.0.center" timestamp="1596217651495">
+    <state width="1899" height="263" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596500076712" />
+    <state width="1899" height="263" key="GridCell.Tab.0.center" timestamp="1596500076712">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="347" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596217651495" />
-    <state width="1899" height="347" key="GridCell.Tab.0.left" timestamp="1596217651495">
+    <state width="1899" height="263" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596500076712" />
+    <state width="1899" height="263" key="GridCell.Tab.0.left" timestamp="1596500076712">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="347" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596217651495" />
-    <state width="1899" height="347" key="GridCell.Tab.0.right" timestamp="1596217651495">
+    <state width="1899" height="263" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596500076712" />
+    <state width="1899" height="263" key="GridCell.Tab.0.right" timestamp="1596500076712">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="347" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596217651495" />
+    <state width="1899" height="263" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596500076712" />
     <state width="1899" height="347" key="GridCell.Tab.1.bottom" timestamp="1596217651577">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
