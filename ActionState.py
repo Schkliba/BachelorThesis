@@ -208,6 +208,7 @@ class Status:
         self.vespin = Fraction(vespin).limit_denominator()
         self.unaries = {}
         self.CT = ct
+
         for u in unaries:
             if u == "Vespin":
                 self.unaries["Vespin"] = BooleanCalendar("Vespin", 0, unaries[u])
@@ -234,9 +235,9 @@ class Status:
     def check(self, goal):
         if goal.name in self.unaries:
             #print(str(goal.count)+goal.name+str(self.unaries[goal.name].shadow))
-            return (goal.count - self.unaries[goal.name].shadow)*goal.weight
+            return (goal.count - self.unaries[goal.name].shadow)
         else:
-            return goal.count * goal.weight
+            return goal.count
 
     def unplan_action(self, action:ScheduledAction):
         #print("Unplanning: " + str(action))

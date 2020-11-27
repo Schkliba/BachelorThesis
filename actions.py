@@ -38,6 +38,8 @@ class Action:
     def __repr__(self):
         return self.name + "("+str(self.duration)+")"
 
+    def effects(self):
+        return self.effect
 
     def schedule(self,from_t):
         mapa = {}
@@ -46,7 +48,7 @@ class Action:
             for i in self.ef_time_map[m]:
                 mapa[m][i+from_t]= self.ef_time_map[m][i]
 
-        return ScheduledAction(self.name, self.minerals,self.vespin,self.prereq,self.unary_cost,
+        return ScheduledAction(self.name, self.id, self.minerals,self.vespin,self.prereq,self.unary_cost,
                                self.burrow,self.duration,self.effect,mapa,from_t)
 
     def preconditions_dict(self):
@@ -77,8 +79,8 @@ class Action:
             return self.effect[e]
 class ScheduledAction(Action):
 
-    def __init__(self,name,  minerals, gas, prereq, cost, burrow, duration, effect, ef_map, start_time):
-        super().__init__(name,  minerals, gas, prereq, cost, burrow, duration, 0,effect, ef_map)
+    def __init__(self,name, id,  minerals, gas, prereq, cost, burrow, duration, effect, ef_map, start_time):
+        super().__init__(name,  minerals, gas, prereq, cost, burrow, duration, id,effect, ef_map)
         self.start_time = start_time
         self.end_time = start_time+duration
         self.surplus_time = 0

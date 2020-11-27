@@ -136,6 +136,7 @@ race,goals = get_Goals(filename)
 graph = getActionGraph(race)
 
 max_s,actions = graph.Filter(INNIT_STATE,goals)
+max_s = {"Hydralisk": 4, "Pop": 16, "Pop_Cap": 16, "Hatchery": 1, "Larva": 3, "Worker": 5, "Vespin": 1, "Hydralisk_Den": 1, "Spawning_Pool": 1}
 print("Maximum")
 print(max_s)
 
@@ -175,7 +176,7 @@ try:
     bestplan = TerranSearch.AstarSearch(game, pool, goals)
     print(game.state)
     print(len(bestplan))
-    print(bestplan)#"""
+    print(bestplan)
 finally:
     end = time.time()
     print(end-start)
@@ -183,6 +184,6 @@ finally:
     print("Branches:"+str(game.finished_branches))
     print("Winning branches:"+str(game.good_branches))
     print("Max Depth:"+str(game.max_depth))
-    print("Max Hot Time:"+str((game.hot_time/(end-start))*100))
+    print("Max Hot Time:"+str((game.hot_time/(end-start))*100)+"%")
 export_plan(bestplan,ofilname)
 

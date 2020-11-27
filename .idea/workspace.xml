@@ -2,15 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="340df6e4-ccb1-4f03-a72e-a2d24b6e0f2a" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/priorityq.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ActionState.py" beforeDir="false" afterPath="$PROJECT_DIR$/ActionState.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TerranTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TerranTest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zerg_Mocker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Zerg_Mocker.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actions.py" beforeDir="false" afterPath="$PROJECT_DIR$/actions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hmaxer.py" beforeDir="false" afterPath="$PROJECT_DIR$/hmaxer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hydra2ultralisk.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hydra2ultralisk.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hydra2ultralisk_plan.out" beforeDir="false" afterPath="$PROJECT_DIR$/hydra2ultralisk_plan.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mutalisk4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mutalisk4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/justifilter.py" beforeDir="false" afterPath="$PROJECT_DIR$/justifilter.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +131,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test.py" />
-      <option name="PARAMETERS" value="Zerg_Mocker" />
+      <option name="PARAMETERS" value="hydra2ultralisk" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -159,11 +161,11 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.Main" />
       <item itemvalue="Python.TerranSearchv4" />
       <item itemvalue="Python.TerranTest" />
       <item itemvalue="Python.Test" />
       <item itemvalue="Python.ThesisParser" />
-      <item itemvalue="Python.Main" />
     </list>
     <recent_temporary>
       <list>
@@ -201,69 +203,87 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="414" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596494143257">
+    <state x="414" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604136003668">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596494143257" />
-    <state x="718" y="324" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596178601149">
+    <state x="414" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604136003668" />
+    <state x="739" y="263" key="FileChooserDialogImpl" timestamp="1602923151004">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="718" y="324" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1596178601149" />
-    <state x="739" y="263" key="FileChooserDialogImpl" timestamp="1596185369622">
+    <state x="739" y="263" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602923151004" />
+    <state width="1899" height="263" key="GridCell.Tab.0.bottom" timestamp="1604426263289">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="739" y="263" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1596185369622" />
-    <state x="794" y="437" width="356" height="166" key="Github.CreateGistDialog" timestamp="1596185991456">
+    <state width="1899" height="263" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604426263289" />
+    <state width="1899" height="263" key="GridCell.Tab.0.center" timestamp="1604426263289">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="437" width="356" height="166" key="Github.CreateGistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596185991456" />
-    <state width="1899" height="263" key="GridCell.Tab.0.bottom" timestamp="1596500076712">
+    <state width="1899" height="263" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604426263289" />
+    <state width="1899" height="263" key="GridCell.Tab.0.left" timestamp="1604426263274">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="263" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596500076712" />
-    <state width="1899" height="263" key="GridCell.Tab.0.center" timestamp="1596500076712">
+    <state width="1899" height="263" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604426263274" />
+    <state width="1899" height="263" key="GridCell.Tab.0.right" timestamp="1604426263289">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="263" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596500076712" />
-    <state width="1899" height="263" key="GridCell.Tab.0.left" timestamp="1596500076712">
+    <state width="1899" height="263" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604426263289" />
+    <state width="1899" height="347" key="GridCell.Tab.1.bottom" timestamp="1604423298496">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="263" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596500076712" />
-    <state width="1899" height="263" key="GridCell.Tab.0.right" timestamp="1596500076712">
+    <state width="1899" height="347" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604423298496" />
+    <state width="1899" height="347" key="GridCell.Tab.1.center" timestamp="1604423298449">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="263" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596500076712" />
-    <state width="1899" height="347" key="GridCell.Tab.1.bottom" timestamp="1596217651577">
+    <state width="1899" height="347" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604423298449" />
+    <state width="1899" height="347" key="GridCell.Tab.1.left" timestamp="1604423298449">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="347" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596217651577" />
-    <state width="1899" height="347" key="GridCell.Tab.1.center" timestamp="1596217651510">
+    <state width="1899" height="347" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604423298449" />
+    <state width="1899" height="347" key="GridCell.Tab.1.right" timestamp="1604423298449">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="347" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596217651510" />
-    <state width="1899" height="347" key="GridCell.Tab.1.left" timestamp="1596217651510">
+    <state width="1899" height="347" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604423298449" />
+    <state x="461" y="163" key="SettingsEditor" timestamp="1602623496742">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="347" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596217651510" />
-    <state width="1899" height="347" key="GridCell.Tab.1.right" timestamp="1596217651577">
+    <state x="461" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602623496742" />
+    <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1604222660596">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="347" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596217651577" />
-    <state x="461" y="163" key="SettingsEditor" timestamp="1590118047851">
+    <state width="968" height="528" key="XDebugger.FullValuePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1604222660596" />
+    <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1605641105188">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1590118047851" />
-    <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1596274950769">
+    <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605641105188" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1603722765538">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596274950769" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1592141733908">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592141733908" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1603722765538" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/TerranTest.py</url>
+          <line>411</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/TerranTest.py</url>
+          <line>417</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/TerranTest.py</url>
+          <line>397</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/TerranTest.py</url>
+          <line>389</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

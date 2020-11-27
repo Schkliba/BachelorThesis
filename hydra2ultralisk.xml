@@ -1,9 +1,5 @@
 <schema race="zerg">
 	<goal>
-		<name>Ultralisk</name>
-		<count>1</count>
-	</goal>
-	<goal>
 		<name>Hydralisk</name>
 		<count>4</count>
 	</goal>

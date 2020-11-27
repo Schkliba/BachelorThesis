@@ -1,20 +1,10 @@
-Mutate Drone;179;479;50;0
-Spawn Larva;479;779;0;0
+Mutate Overlord;358;958;100;0
 Mutate Spawning Pool;0;1200;200;0
-Mutate Drone;1200;1500;50;0
+Spawn Larva;958;1258;0;0
 Mutate Hydralisk Den;1200;1800;100;50
-Spawn Larva;1500;1800;0;0
+Mutate Hydralisk;1800;2220;75;25
 Mutate Hydralisk;1800;2220;75;25
 Spawn Larva;2220;2520;0;0
 Mutate Hydralisk;2220;2640;75;25
-Mutate Lair;1200;2700;150;100
-Spawn Larva;2640;2940;0;0
-Mutate Hydralisk;2640;3060;75;25
-Spawn Larva;3060;3360;0;0
-Mutate Hydralisk;3060;3480;75;25
-Spawn Larva;3480;3780;0;0
-Mutate Queen's Nest;3060;3960;150;100
-Mutate Spawning Pool;3960;5160;200;0
-Mutate Hive;3960;5760;200;150
-Mutate Ultralisk Cavern;5760;6960;150;200
-Mutate Ultralisk;6960;7860;200;200
+Spawn Larva;2520;2820;0;0
+Mutate Hydralisk;2520;2940;75;25

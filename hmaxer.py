@@ -34,17 +34,23 @@ class JNode(Node):
     def __init__(self, name,action):
         super().__init__(name)
         self.inner_action = action
+        self.parent = action.preconditions()[0]
 
     def preconditions(self):
         return self.inner_action.preconditions()
     def __repr__(self):
+
         return self.name
     def preconditions_cost(self):
         return self.inner_action.unary_cost
 
+    def set_parent(self, parent):
+        self.parent = parent
+
     def preconditions_req(self):
         return self.inner_action.prereq
-
+    def effects(self):
+        return self.inner_action.effect
     def preconditions_burrow(self):
         return self.inner_action.burrow
     def prereq(self):
@@ -77,10 +83,11 @@ def outgoing(node):
 class JustificationGraph:
     def __init__(self,metric):
         self.by_effects = {}
-        self.varibales = set()
+        self.variables = set()
         self.by_action = {}
         self.metric = metric
         self.measures={}
+        self.by_req = {}
 
     def __get_or_make_node(self, name) -> JNode:
         if name not in self.nodes.keys():
@@ -93,7 +100,14 @@ class JustificationGraph:
     def register_action(self,action: Action):
         node = JNode(action.name,action)
         self.by_action[action.name] = node
-        for e in action.effect:
+        self.variables.update(action.preconditions())
+        for p in action.preconditions():
+            if p in self.by_req:
+                self.by_req[p] += [node]
+            else:
+                self.by_req[p] = [node]
+        for e in action.effects():
+            self.variables.add(e)
             if e in self.by_effects:
                 self.by_effects[e] += [node]
             else:
@@ -125,7 +139,7 @@ class JustificationGraph:
                     arcNodes(n, action, c, "c")
 
 
-
+import priorityq
 class ParallelHeuristic(JustificationGraph):
 
     def __init__(self,and_f, or_f = min, measure=lambda x: x.duration):
@@ -134,9 +148,47 @@ class ParallelHeuristic(JustificationGraph):
         self.or_f = or_f
         self.heuristic_vals = {}
 
-    def h(self, state_variables,goal_variables, ):
-        h=0
-        self.heuristic_vals = {}
+    def h_ci(self,start_variables,goal_variables):
+        queue = priorityq.MinPriorityQueue()
+        print("začnu!")
+        for v in self.variables:
+            if v in start_variables:
+                self.heuristic_vals[v] = 0
+                queue.insert((0,v))
+            else:
+                self.heuristic_vals[v] = math.inf
+                queue.insert((math.inf,v))
+        U = {}
+        for a in self.by_action:
+            U[a] = len(self.by_action[a].preconditions())
+        while not queue.isEmpty():
+            h,v = queue.pop()
+            #print(v+"/"+str(h))
+
+            if v in self.by_req:
+                act_nodes = self.by_req[v]
+            else:
+                act_nodes = []
+
+            for action in act_nodes:
+                hn = h + self.measure(action)
+                U[action.name] -= 1
+                if U[action.name] == 0:
+                    for e in action.effects():
+                        if hn < self.heuristic_vals[e]:
+                            self.heuristic_vals[e] = hn
+                            #if e in self.by_req:
+                             #   for c in self.by_req[e]:
+                             #       U[c.name] += 1
+                        queue.insert((hn,e))
+        ret_val = -math.inf #TODO: Not hardcode
+        for g in goal_variables:
+            ret_val=self.and_f(ret_val,self.heuristic_vals[g])
+        return ret_val
+
+    def h(self, state_variables,goal_variables):
+        return self.h_ci(state_variables,goal_variables)
+        """self.heuristic_vals = {}
         for g in goal_variables: #and vrcholy
             if g not in state_variables:
                 new_sources = self.by_effects[g]
@@ -151,7 +203,7 @@ class ParallelHeuristic(JustificationGraph):
                 self.heuristic_vals[g] = self.and_f(self.heuristic_vals[g], little_h)
             else:
                 self.heuristic_vals[g] = little_h
-        return h
+        return h"""
 
 
     def h_search(self, state_variables, source):
@@ -178,30 +230,98 @@ class ParallelHeuristic(JustificationGraph):
 
         return h
 
+def select_most_best(possible_parents,h):
+    max_val = - math.inf
+    selected_parent = None
+    #print("parent_select")
+    for p in possible_parents:
+        #print(p)
+        #print(h[p])
+        if p in h and h[p] > max_val:
+                selected_parent = p
+                max_val = h[p]
+    return selected_parent
+
 class LLBHeuristic(ParallelHeuristic):
 
     def __init__(self,and_f, or_f = min, metric = lambda x:x.duration ):
         super().__init__(and_f,or_f,metric)
-        self.measures ={}
+        self.select_func = select_most_best
+        self.measures = {}
+        self.parents = {}
+        self.edges = {}
 
-    def LM_Cutting(self,state_variables,goal_variables):
-
+    def LM_Cutting(self,state_variables,goal_variables): #TODO infinite loop. third area exists
+        #print("cutting")
         h_lm = 0
+        ha = self.h(state_variables, goal_variables)
+        while ha > 0:
+            #print("looped")
 
-        while self.h(state_variables,goal_variables) > 0:
-            print("WOOOOOOOO")
-            print(state_variables)
-            print(self.heuristic_vals)
-            V_star = self.target_search(goal_variables)
-            print(V_star)
-            landmark = self.find_cut(V_star, None)
-            print(landmark)
+            #print(ha)
+            #TODO: main representaant selection - building graph
+            self.buildGraph(state_variables,goal_variables)
+            V_g = self.target_search(goal_variables)
+            #print(V_g)
+            V_s = self.source_search(V_g)
+            landmark = self.find_cut(V_g, V_s)
+            #print(landmark)
+            #print(self.heuristic_vals)
+            #print(self.variables)
+            #print(self.by_action.keys())
+            #print(state_variables)
+            #
+
+            #print(V_s)
+            #print(V_g)
+            assert landmark != []
             h_lm += self.adjust_for(landmark)
-            print(self.measures)
+            ha = self.h(state_variables, goal_variables)
+
         #print(self.heuristic_vals)
         #return landmark
         return h_lm
 
+    def buildGraph(self, start_variables, goal_varibales):
+        self.edges.clear()
+        for name,action in self.by_action.items():
+            parent = self.select_func(action.preconditions(), self.heuristic_vals)
+            self.parents[action.name] = parent
+            for e in action.effects():
+                if e not in self.edges:
+                    self.edges[e] = []
+                self.edges[e].append((parent, action))
+
+        for v_s in start_variables:
+            if v_s not in self.edges:
+                self.edges[v_s] = []
+            self.edges[v_s] += [("start", None)]
+        parent = self.select_func(goal_varibales, self.heuristic_vals)
+        self.edges["goal"] = [(parent, None)]
+
+
+
+    """def buildGraph(self, start_variables, goal_varibales):
+        for variable in self.variables:
+            nodes = self.by_effects[variable]
+            preconds=[]
+            actions = []
+            for n in nodes:
+                print(n.name)
+                preconds+=n.preconditions()
+            print(variable)
+            parent = self.select_func(preconds,self.heuristic_vals)
+
+            print(preconds)
+            for n in nodes:
+                if parent in n.preconditions():
+                    actions += [n]
+            self.parents[variable] = (parent,actions)
+        for v_s in start_variables:
+            self.parents[v_s] = ("start",[])
+        parent = self.select_func(goal_varibales,self.heuristic_vals)
+        self.parents["goal"] = (parent,[])
+    """
     def adjust_for(self, landmarks):
         mininimum_cost  = math.inf
         for l in landmarks:
@@ -210,39 +330,62 @@ class LLBHeuristic(ParallelHeuristic):
             self.measures[l.name] -= mininimum_cost
         return mininimum_cost
 
-
     def get_h(self,node):
         ret_val = 0
         for i in node.preconditions():
             ret_val = self.max(ret_val,self.heuristic_vals[i])
         return ret_val
 
-    def find_cut(self, V_star, V_0):
+    def find_cut(self, V_g, V_s):
+
+        сut_actions = []
+        for variable in V_g:
+            #print("changing variable")
+
+            edges = self.edges[variable]
+            #print(variable)
+            #print(p_var)
+            for parent,action in edges:
+                if parent in V_s:
+                    сut_actions += [action]
+
+        return сut_actions
+    def source_search(self, V_g):
 
         h_max = 0
-
-        sufficing_actions = []
-        for variable in V_star:
-            if h_max < self.heuristic_vals[variable]:
-                maybe_actions = self.by_effects[variable]
-                sufficing_actions = []
-                for a in maybe_actions:
-                    distance = self.measure(a)
-                    print(a)
-                    print(distance)
-                    if distance > 0:
-                        sufficing_actions += [a]
-                        h_max = self.heuristic_vals[variable]
-
+        sufficing_actions = self.variables - set(V_g)
         return sufficing_actions
 
     def target_search(self, goals):
 
-        queue = [] # goals jsou jen stringy
-        outset = list(goals)
+        queue = ["goal"]  # goals jsou jen stringy
+        outset = []
         visited = set()
-        for g in goals:
-            queue +=self.by_effects[g]
+
+        while not len(queue) == 0:
+            variable = queue.pop(0)
+            if variable in visited:
+                continue
+            visited.add(variable)
+            edges = self.edges[variable]
+            print(edges)
+            for parent, action in edges:
+                if action is not None:
+                    distance = self.measure(action)
+                else:
+                    distance = 0
+
+                if distance == 0:
+                    queue += [parent]
+                    outset.append(parent)
+        return outset
+    """def target_search(self, goals):
+
+        queue = ["goal"] # goals jsou jen stringy
+        outset = []
+        visited = set()
+    
+
         while not len(queue) == 0:
             action_edge = queue.pop(0)
             if action_edge in visited:
@@ -250,11 +393,10 @@ class LLBHeuristic(ParallelHeuristic):
             visited.add(action_edge)
             distance = self.measure(action_edge)
             if distance == 0:
-                prec = action_edge.preconditions()
-                outset += prec
-                for p in prec:
-                    queue += self.by_effects[p]
-        return outset
+                prec = self.parents[action_edge.name]
+                outset += [prec]
+                queue += self.by_effects[prec]
+        return outset"""
 
 
 class CumulativeHeuristic(JustificationGraph):
@@ -271,10 +413,10 @@ class CumulativeHeuristic(JustificationGraph):
         temp = self.metric
         if measure is not None:
             self.metric = measure
+        self.take_measures()
+
         for g,count in goal_variables.items(): #and vrcholy
-
             if g not in state_variables or count > state_variables[g]:
-
                 if g in state_variables:
                     request = count-state_variables[g]
                 else:
@@ -284,6 +426,8 @@ class CumulativeHeuristic(JustificationGraph):
                 for s in new_sources:  # or search přes akce naplňují preconditions
                     value = self.h_search(state_variables, s, request)
                     little_h = self.or_f(little_h, value)
+
+
             else:
                 little_h = 0
             h = self.and_f(h, little_h)
@@ -301,6 +445,7 @@ class CumulativeHeuristic(JustificationGraph):
         h = 0
         little_h = math.inf
         for p, count in source.preconditions_cost().items(): #and search přes jednotlivé proconditions
+
             if p not in state_variables or state_variables[p] < count*requested_number:
                 if p in state_variables:
                     cur_count = state_variables[p]

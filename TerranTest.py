@@ -119,11 +119,24 @@ class PlanningWindow: #ukládání plánu v časové souvislosti
         self.finish_time = 0
         self.time_line = timeline #invariant: akce s menším indexem končí dřív
         self.a_order = [] #ukládá akce v pořadí v němž byly naplánovány. tj. řazení dle času začátku
+        self.min_cost = 0
+        self.moment_starts = []
+        self.moments = []
 
     def _plan_action(self, act: ScheduledAction):
         self.time_line.add_action(self.gen_action_ID(),act)
-        self.a_order = [act]+self.a_order
-
+        self.a_order = [act] + self.a_order
+        if self.moments == [] or self.moments[len(self.moments)-1] != act.start_time:
+            self.moments += [act.start_time]
+            self.moment_starts += [len(self.a_order)-1]
+        self.min_cost += act.minerals
+    def is_pruned(self,act:ScheduledAction):
+        if len(self.a_order) < 1: return False
+        last_action = self.a_order[len(self.a_order)-1]
+        if self.moments == [] or self.moments[len(self.moments)-1] == act.start_time:
+            return last_action.id > act.id
+        else:
+            return False
     def plan_action(self, act: ScheduledAction):
         self._plan_action(act)
         return act
@@ -145,6 +158,10 @@ class PlanningWindow: #ukládání plánu v časové souvislosti
     def unplan_action(self, action: ScheduledAction):
         self.time_line.delete(self.gen_action_ID()-1,action)
         self.a_order.remove(action)
+        if self.moment_starts[len(self.moment_starts)-1] < len(self.a_order):
+            self.moment_starts.pop(len(self.moment_starts)-1)
+            self.moments.pop(len(self.moments)-1)
+        self.min_cost -= action.minerals
 
     def last(self):
         if len(self.a_order)<1: return None
@@ -197,6 +214,7 @@ class Game:
         self.good_branches = 0
         self.id_check = 0
         self.hot_time = 0
+
     def CT(self):
         return self.window.time
 
@@ -206,7 +224,7 @@ class Game:
                 continue
             if self.state.unaries[u].shadow > self.max_bounds[u]:
                 return True
-        return False
+        return False #false is good, true is bad
 
     def unplan_last(self):
         action = self.window.unplan_last()
@@ -247,23 +265,22 @@ class Game:
 
     def time_shift(self, new_time):
         self.window.time = new_time
+    def schedule(self, act: Action):
+        return self.__schedule_action(act)
 
-    def plan_next_action(self, action: Action):
-        sch_a = self.__plan_acton(action)
+    def plan_next_action(self, sch_a: ScheduledAction):
+        self.state.plan_action(sch_a)
         self.window.plan_action(sch_a)
         return sch_a.start_time #TODO:
 
-    def __plan_acton(self,action):
-
+    def __schedule_action(self,action):
         surplus_time = self.state.when(action) - self.state.CT
         print("Surplus!"+str(surplus_time))
         assert surplus_time < math.inf
         z = time.time()
         sch_a = action.schedule(self.CT())
-
         sch_a.add_time(surplus_time)
 
-        self.state.plan_action(sch_a)
         w = time.time()
 
         return sch_a
@@ -297,25 +314,21 @@ class Game:
         for u in self.state.unaries:
             if self.state.unaries[u].shadow > 0:
                 new_state[u] = self.state.unaries[u].shadow
-                if u not in new_goals or new_state[u] >= new_goals[u]:
+                if u not in new_goals or new_state[u] < new_goals[u]:
                     simple_state.add(u)
         simple_goals = set(new_goals.keys())
+        print(new_goals)
+        print(new_state)
+        print(simple_state)
         self.h_resources.take_measures()
         self.h_duration.take_measures()
         minerals = self.h_resources.h(new_state,new_goals)
         vespin = self.h_resources.h(new_state,new_goals, lambda x: x.vespin)
-        print(vespin)
-        print(minerals)
-
-        #print(self.state)
-        #print(new_state)
-        #print(new_goals)
         one_end = self.window.get_potential() + self.state.project_h(minerals,vespin)
+        z = time.time()
         second_end = self.window.get_potential() + self.h_duration.LM_Cutting(simple_state,simple_goals)
-        #print(self.window.get_potential())
-        #print(self.window.a_order)
-        print("First end:"+str(one_end))
-        print("Second end:" + str(second_end))
+        w = time.time()
+        self.hot_time += (w - z)
         #assert False
         return max(second_end,one_end)
 
@@ -326,7 +339,7 @@ class Game:
 def AstarSearch(game: Game, actions: ActionPool, goals:List[Goal]):
     step = actions.max_duration()
     min = actions.min_duration()
-    base = 20000
+    base = 10000
     """for g in goals:
         base += g.count*step"""
     ub_time = base
@@ -376,64 +389,50 @@ def AStarDFS(game: Game, goals, current_time, ub_time, depth: int, ub_distance):
         print("Dosáhli jsme maximálních hranice")
         game.finished_branches += 1
         return MockPlan(ub_time,goal_distance),True
+    z = time.time()
+    potential = game.potential_end(goals)
+    w= time.time()
 
+    #assert depth < 25
+    if goal_distance <= 0:
+        print("Vyhráli jsme!")
+        plan = game.get_plan(goal_distance)
+        #assert False
+        game.finished_branches += 1
+        game.good_branches += 1
+        # assert game.good_branches < 7
+        return plan, True
     """if (depth == 6 ):
         print("Hloubka...")
         return MockPlan(ub_time,goal_distance),True#něco co není potenciál"""
-
     plan_act = game.action_pool
+
+
+    if (potential >= ub_time):
+        print("Limitní čas...")
+        #assert False
+        game.finished_branches += 1
+        return MockPlan(ub_time,goal_distance),False #něco co není potenciál
+
     if len(plan_act) == 0:
         print("Slepá ulička")
         game.finished_branches += 1
         return MockPlan(ub_time, goal_distance),True
-
-    potential = game.potential_end(goals)
-    if (potential >= ub_time):
-        print("Limitní čas...")
-        game.finished_branches += 1
-        return MockPlan(potential,goal_distance),False #něco co není potenciál
-
-    if goal_distance <= 0:
-        print("Vyhráli jsme!")
-        plan = game.get_plan(goal_distance)
-        print(plan)
-        print(game.window.a_order)
-        print(game.state)
-        #assert False
-        game.finished_branches +=1
-        game.good_branches += 1
-        #assert game.good_branches < 7
-        return plan, True
     goals2 = goals
-
-
-    #planovatelné akce od tohoto okamžiku
-    #print(current_time)
-
-    #print(game.window.a_order)
-
     for a in plan_act.actions:
-
-        z = time.time()
         if not game.state.is_plannable(a):
             print("Unplannable"+str(a))
             continue
         else:
             print("Začíná"+str(a))
-        #print(current_time)
-        #print(game.state)
         assert int(game.state.unaries["Larva_Timer"]) >= 0
-
-        new_current_time = game.plan_next_action(a)
-
-        #print(game.state)
-        #print("bf/af")
+        sch_a = game.schedule(a)
+        if game.window.is_pruned(sch_a):
+            continue
+        new_current_time = game.plan_next_action(sch_a)
         finished_actions = game.refresh(new_current_time)
         game.finish_actions(finished_actions)
         w = time.time()
-        game.hot_time += (w - z)
-        #print(game.state)
-        #print(game.state.unaries)
         assert game.state.minerals >=0
         print("Dem dovnitř!"+ str(a)+"Depth:"+str(depth))
 
@@ -443,9 +442,7 @@ def AStarDFS(game: Game, goals, current_time, ub_time, depth: int, ub_distance):
             bestplan = plan
             besttime = plan.time
         bestsignal = bestsignal and signal
-
         #print(game.state.unaries)
         game.reverse(current_time)
-
         print("Dem ven! - " + str(current_time) + str(a))
     return bestplan,bestsignal
