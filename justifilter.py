@@ -204,78 +204,7 @@ class JustificationGraph:
         signal = True
         h_sum = 0
         max_state = {}
-        for g_name, g_count in goals.items(): #jednotlivé and vrcholy
-            cur_node = self.nodes[g_name]
-            if g_name in in_state and in_state[g_name]>=g_count: #poku je splněno, neřešíme
-                continue
-            if cur_node.visited: #detekce cyklu
-                cur_node.stop_fail_propagation = True
-                return math.inf, {}, False
 
-            feasible_actions = cur_node.justification_actions() #chceme jen akce které pomůžou splnit daný subgoal
-
-            # print("Actions: "+str(feasible_actions))
-            if len(feasible_actions) == 0:
-                print("Slepá ulička. Není žádná akce pro cíl: " + str(g_name))
-                return math.inf,{}, False
-
-            """inicializace lokálních OR proměných"""
-            goal_actions = set()
-            goal_signal = False
-            goal_state = {}
-            least_actions = math.inf
-            for index in range(len(feasible_actions)): #procházení OR vrcholů
-
-                action = feasible_actions[index]
-                sub = 0
-                if g_name in in_state:
-                    sub = in_state[g_name]
-
-                apply_c = math.floor((g_count - sub) / action.effect[g_name]) #výpočet kolikrát musíme uplatni akci pro splnění goalu
-                if (g_count - sub) % action.effect[g_name] > 0:
-                    apply_c += 1
-                #print(action.name)
-                #print(apply_c)
-                new_goals = {} #výroba nových subgoalů
-                for r in action.prereq:
-                    subtrack = 0
-                    if r in in_state and action.prereq[r] > in_state[r]:
-                        subtrack = action.prereq[r] - in_state[r]
-                    elif r not in in_state:
-                        new_goals[r] =  action.prereq[r]
-
-                for b in action.burrow:
-                    subtrack = 0
-                    if b in in_state:
-                        subtrack = in_state[b]
-                    if b not in in_state or (action.burrow[b]*apply_c) > in_state[b]:
-                        new_goals[b] = (action.burrow[b]*apply_c) - subtrack
-                for c in action.unary_cost:
-                    new_goals[c] = (action.unary_cost[c] * apply_c)
-
-
-                change = {} #dáváme dohromady stav
-                for e in action.effect: #TODO: musí být dictionary
-                    change[e] = action.effect[e] * apply_c
-
-                new_state = sum_merge(in_state,change)
-                #print("New_state:"+str(new_state)+"Now in "+cur_node.name+" Needing "+g_name+" "+str(g_count))
-                cur_node.visited = True
-                new_h, past_state, new_signal = self.filtersearch(new_state, new_goals, depth + 1)
-                cur_node.visited = False
-                h_c = apply_c * action.minerals
-                if  least_actions>(h_c+ new_h):
-                    goal_state = change
-                    goal_state = sum_merge(goal_state, past_state)
-                    least_actions = h_c+ new_h
-
-                if  least_actions==(h_c+ new_h):
-                    goal_state = change
-                    goal_state = sum_merge(goal_state, past_state)
-            h_sum += least_actions
-            max_state = sum_merge(max_state,goal_state)
-            signal = signal and goal_signal
-            ret_plan = ret_plan.union(goal_actions)
 
         return h_sum,max_state,signal
 def sum_merge(dictA, dictB):

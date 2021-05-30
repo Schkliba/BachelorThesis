@@ -1,0 +1,11 @@
+{
+  "worker": 5,
+  "base": 1,
+  "larva": 0,
+  "larva_timer": 1,
+  "hatchery_token": 1,
+  "hatchery": 1,
+  "pop": 4,
+  "pop_cap": 9,
+  "overlord": 1
+}

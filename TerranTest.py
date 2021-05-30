@@ -158,7 +158,8 @@ class PlanningWindow: #ukládání plánu v časové souvislosti
     def unplan_action(self, action: ScheduledAction):
         self.time_line.delete(self.gen_action_ID()-1,action)
         self.a_order.remove(action)
-        if self.moment_starts[len(self.moment_starts)-1] < len(self.a_order):
+        #assert len(self.moment_starts) > 0
+        if self.moment_starts[len(self.moment_starts)-1] > len(self.a_order): #TODO Number of actions attached to start moment
             self.moment_starts.pop(len(self.moment_starts)-1)
             self.moments.pop(len(self.moments)-1)
         self.min_cost -= action.minerals
@@ -369,7 +370,7 @@ def AStarDFS(game: Game, goals, current_time, ub_time, depth: int, ub_distance):
         game.max_depth = depth
     #print(game.window)
     #print("Some Word:"+str(game.state))
-    check = 0
+
     """global sequence
     for i in range(min(len(game.window.a_order), len(sequence))):
         if game.window.a_order[i].name == sequence[i]:

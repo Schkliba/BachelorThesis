@@ -2,17 +2,60 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="340df6e4-ccb1-4f03-a72e-a2d24b6e0f2a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/priorityq.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/InitStates/standard_state_protoss.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/InitStates/standard_state_terran.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/InitStates/standard_state_zerg.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/mask_protoss.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/mask_terran.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/mask_zerg.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analysis.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/files.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/graphtest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/preprocessing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Thesis.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Thesis.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ActionState.py" beforeDir="false" afterPath="$PROJECT_DIR$/ActionState.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mocker.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pathfinding" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TechSearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/TechSearch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TerranTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TerranTest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TimeLine.py" beforeDir="false" afterPath="$PROJECT_DIR$/TimeLine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZergSearch.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZergSearch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zerg_Mocker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Zerg_Mocker.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zerg_Mocker_plan.out" beforeDir="false" afterPath="$PROJECT_DIR$/Zerg_Mocker_plan.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/actions.py" beforeDir="false" afterPath="$PROJECT_DIR$/actions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildings_protoss.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildings_terran.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildings_zerg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fail_file_plan.out" beforeDir="false" afterPath="$PROJECT_DIR$/fail_file_plan.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hmaxer.py" beforeDir="false" afterPath="$PROJECT_DIR$/hmaxer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hydra2ultralisk.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hydra2ultralisk.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hydra2ultralisk.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/hydra2ultralisk_plan.out" beforeDir="false" afterPath="$PROJECT_DIR$/hydra2ultralisk_plan.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/justifilter.py" beforeDir="false" afterPath="$PROJECT_DIR$/justifilter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mutalisk4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mutalisk4_plan.out" beforeDir="false" afterPath="$PROJECT_DIR$/mutalisk4_plan.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mutalisk5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mutalisk5_plan.out" beforeDir="false" afterPath="$PROJECT_DIR$/mutalisk5_plan.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/priorityq.py" beforeDir="false" afterPath="$PROJECT_DIR$/priorityq.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protoss_mocker.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/protoss_proof.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/protoss_proof_plan.out" beforeDir="false" afterPath="$PROJECT_DIR$/protoss_proof_plan.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/research_protoss.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/research_terran.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/research_zerg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/techtree.txt" beforeDir="false" afterPath="$PROJECT_DIR$/techtree.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/terran_mocker_plan.out" beforeDir="false" afterPath="$PROJECT_DIR$/terran_mocker_plan.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/triggers_zerg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ultralisk2_plan.out" beforeDir="false" afterPath="$PROJECT_DIR$/ultralisk2_plan.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/units_protoss.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/units_terran.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/units_zerg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zergling10hydra1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zergling10hydra1_plan.out" beforeDir="false" afterPath="$PROJECT_DIR$/zergling10hydra1_plan.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zergling16hydra1_plan.out" beforeDir="false" afterPath="$PROJECT_DIR$/zergling16hydra1_plan.out" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,12 +75,13 @@
   <component name="ProjectId" id="1VOe05FHJm1jlKjtxXQ3M7yhv7V" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="HTML" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Data/InitStates" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -51,10 +95,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Data/InitStates" />
       <recent name="C:\Users\Elyon\PycharmProjects\Thesis" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Data" />
+    </key>
   </component>
-  <component name="RunManager" selected="Python.Main">
+  <component name="RunManager" selected="Python.Test">
     <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Thesis" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -62,55 +110,13 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda3/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main.py" />
       <option name="PARAMETERS" value="hydra2ultralisk" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TerranSearchv4" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Thesis" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TerranSearchv4.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TerranTest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Thesis" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TerranTest.py" />
-      <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -125,13 +131,13 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda3/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test.py" />
-      <option name="PARAMETERS" value="hydra2ultralisk" />
+      <option name="PARAMETERS" value="./Plans/hydra2ultralisk" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -146,9 +152,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda3/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ThesisParser.py" />
@@ -160,20 +166,62 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="analysis" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Thesis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analysis.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="graphtest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Thesis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/graphtest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.Main" />
-      <item itemvalue="Python.TerranSearchv4" />
-      <item itemvalue="Python.TerranTest" />
       <item itemvalue="Python.Test" />
       <item itemvalue="Python.ThesisParser" />
+      <item itemvalue="Python.analysis" />
+      <item itemvalue="Python.graphtest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Main" />
         <item itemvalue="Python.Test" />
-        <item itemvalue="Python.TerranTest" />
-        <item itemvalue="Python.TerranSearchv4" />
+        <item itemvalue="Python.analysis" />
+        <item itemvalue="Python.graphtest" />
         <item itemvalue="Python.ThesisParser" />
+        <item itemvalue="Python.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -189,6 +237,7 @@
       </list>
     </option>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -202,95 +251,27 @@
     </task>
     <servers />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="414" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604136003668">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="414" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604136003668" />
-    <state x="739" y="263" key="FileChooserDialogImpl" timestamp="1602923151004">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="739" y="263" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602923151004" />
-    <state width="1899" height="263" key="GridCell.Tab.0.bottom" timestamp="1604426263289">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="263" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604426263289" />
-    <state width="1899" height="263" key="GridCell.Tab.0.center" timestamp="1604426263289">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="263" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604426263289" />
-    <state width="1899" height="263" key="GridCell.Tab.0.left" timestamp="1604426263274">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="263" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604426263274" />
-    <state width="1899" height="263" key="GridCell.Tab.0.right" timestamp="1604426263289">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="263" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604426263289" />
-    <state width="1899" height="347" key="GridCell.Tab.1.bottom" timestamp="1604423298496">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="347" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604423298496" />
-    <state width="1899" height="347" key="GridCell.Tab.1.center" timestamp="1604423298449">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="347" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604423298449" />
-    <state width="1899" height="347" key="GridCell.Tab.1.left" timestamp="1604423298449">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="347" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604423298449" />
-    <state width="1899" height="347" key="GridCell.Tab.1.right" timestamp="1604423298449">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="347" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604423298449" />
-    <state x="461" y="163" key="SettingsEditor" timestamp="1602623496742">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="461" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602623496742" />
-    <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1604222660596">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="968" height="528" key="XDebugger.FullValuePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1604222660596" />
-    <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1605641105188">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605641105188" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1603722765538">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1603722765538" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/TerranTest.py</url>
-          <line>411</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/TerranTest.py</url>
-          <line>417</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/TerranTest.py</url>
-          <line>397</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/TerranTest.py</url>
-          <line>389</line>
-          <option name="timeStamp" value="17" />
+          <url>file://$PROJECT_DIR$/Test.py</url>
+          <line>55</line>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
-      <default-breakpoints>
-        <breakpoint type="python-exception">
-          <properties notifyOnTerminate="true" exception="BaseException">
-            <option name="notifyOnTerminate" value="true" />
-          </properties>
-        </breakpoint>
-      </default-breakpoints>
     </breakpoint-manager>
   </component>
 </project>

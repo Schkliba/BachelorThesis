@@ -1,0 +1,25 @@
+<research race="zerg">
+    <action>
+		<name>Research Lurker Aspect</name>
+		<minerals>200</minerals>
+		<vespin>200</vespin>
+		<purpose>Lurker_Aspect_Research</purpose>
+		<duration>120</duration>
+		<burrow>
+            <element>
+				<key>Hydralisk_Den</key>
+				<value>1</value>
+			</element>
+		</burrow>
+		<cost>
+		</cost>
+		<require>
+		</require>
+		<effects>
+			<element>
+				<key>Lurker_Aspect_Research</key>
+				<value>1</value>
+			</element>
+		</effects>
+	</action>
+</research>

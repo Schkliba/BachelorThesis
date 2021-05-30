@@ -1,0 +1,6 @@
+{
+  "worker": 5,
+  "base": 1,
+  "pop": 5,
+  "pop_cap": 10
+}

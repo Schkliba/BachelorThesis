@@ -5,7 +5,7 @@ class Action:
         self.id = id
         self.minerals = minerals
         self.vespin = gas
-
+        self.purpose = ""
 
         self.prereq = prereq#před
         self.unary_cost = cost #zničené suroviny

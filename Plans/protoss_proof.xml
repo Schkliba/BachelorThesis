@@ -1,0 +1,6 @@
+<schema race="protoss">
+	<goal>
+		<name>Dark_Templar</name>
+		<count>3</count>
+	</goal>
+</schema>

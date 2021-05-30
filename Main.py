@@ -171,8 +171,8 @@ in_state = TerranSearch.Status(INNIT_MINERALS,INNIT_VESPIN, INNIT_STATE,INNIT_WO
 
 pool.connect(in_state)
 game = TerranSearch.Game(in_state, pool, duration_g,resource_g, max_s)
+
 try:
-    pass
     bestplan = TerranSearch.AstarSearch(game, pool, goals)
     print(game.state)
     print(len(bestplan))

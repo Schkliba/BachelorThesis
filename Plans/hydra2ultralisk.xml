@@ -1,0 +1,10 @@
+<schema race="zerg">
+	<goal>
+		<name>Hydralisk</name>
+		<count>2</count>
+	</goal>
+	<goal>
+		<name>Ultralisk</name>
+		<count>2</count>
+	</goal>
+</schema>
