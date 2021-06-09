@@ -8,7 +8,7 @@ import copy
 import math
 from typing import List
 from actions import *
-from ActionState import Status
+from state import Status
 import time
 
 
@@ -17,6 +17,8 @@ class Goal:
         self.name = name
         self.weight = weight
         self.count = count
+
+
 
 class Plan:
     def __init__(self,timeline):

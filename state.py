@@ -4,6 +4,8 @@ import copy
 import math
 from typing import List
 from actions import *
+
+
 class Calendar:
 
     def __init__(self, name, current, in_val):
@@ -114,6 +116,7 @@ class CountingCalendar(Calendar):
 
         self.current_time = new_time
 
+
 class BooleanCalendar(Calendar):
     def __init__(self, name, current, in_val):
         super().__init__(name, current, in_val)
@@ -161,6 +164,7 @@ class BooleanCalendar(Calendar):
 
         self.current_time = new_time
 
+
 class WorkingCalendar(Calendar):
     def __init__(self, name, current, in_val, forward_f, return_f):
         super().__init__(name, current, in_val)
@@ -200,6 +204,7 @@ class WorkingCalendar(Calendar):
         #self.current_count -= self.timeline[time_t]
         self.return_f(ct, new_time, self.current_count)
         self.current_time = new_time
+
 
 class Status:
 

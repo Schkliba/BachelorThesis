@@ -1,4 +1,6 @@
 import copy
+
+
 class Plan:
     def __init__(self, timeline):
         self.plan = []
@@ -27,6 +29,7 @@ class MockPlan:
 
     def __str__(self):
         return "Mock Plan"
+
 
 class Timeline:  # objekt pro držení pořadí akcí podle času ukončení
 

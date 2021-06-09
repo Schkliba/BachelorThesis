@@ -299,7 +299,7 @@ def Simplesearch(in_state, goals, realm, plan, depth):
 
     return ret_plan
 
-filename = "techtree.txt"
+filename = "../techtree.txt"
 ofilname = "plan.out"
 print("Starting up, boss!")
 pddl = TechTreeReader()

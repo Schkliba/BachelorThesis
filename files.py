@@ -30,7 +30,7 @@ def create_action(root):
     global ACTION_COUNTER
     name = root.find("name")
     minerals = root.find("minerals")
-    vespin = root.find( "vespin")
+    vespin = root.find("vespin")
     purpose = root.find("purpose")
     duration = root.find("duration")
     effects_e = root.find("effects")
